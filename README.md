@@ -1,6 +1,8 @@
 質問ではない。
 ================
 
+[![Build Status](https://travis-ci.org/rhysd/ezoe.svg)](https://travis-ci.org/rhysd/ezoe)
+
 ![screenshot](https://raw.githubusercontent.com/rhysd/screenshots/master/ezoe/ezoe.png)
 
 [`ezoe` command](http://mattn.kaoriya.net/software/lang/go/20150520134340.htm) implemented with [Crystal](http://crystal-lang.org/).
@@ -32,6 +34,7 @@ It seems that Crystal is not ready for Windows.  [Cross compilation](http://crys
 
 - [golang](https://github.com/mattn/ezoe)
 - [Haskell](https://github.com/tanakh/ezoe)
+- [Clojure](https://github.com/mattn/clj-ezoe)
 
 ## License
 
