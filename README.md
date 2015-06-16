@@ -1,5 +1,7 @@
-質問ではない
-============
+質問ではない。
+================
+
+![screenshot](https://raw.githubusercontent.com/rhysd/screenshots/master/ezoe/ezoe.png)
 
 [`ezoe` command](http://mattn.kaoriya.net/software/lang/go/20150520134340.htm) implemented with [Crystal](http://crystal-lang.org/).
 
@@ -16,6 +18,8 @@ $ ezoe
 ```
 $ ezoe ビム？イーマクス？
 ```
+
+You can change the user by `-u {user}` option. Default user is [EzoeRyou](http://ask.fm/EzoeRyou).
 
 ## Installation
 
