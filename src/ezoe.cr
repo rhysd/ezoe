@@ -27,11 +27,11 @@ def post_question(user, question)
   token = response.body.match(/<input name="authenticity_token" type="hidden" value="([^"]+)"/).try &.[1]
   error "authentication token not found" unless token
 
-  params = [
-              "authenticity_token", token,
-              "question[question_text]", question,
-              "question[force_anonymous]", "force_anonymous",
-           ].map{|p| CGI.escape p}.each_slice(2).map{|kv| "#{kv[0]}=#{kv[1]}"}.join('&')
+  params = CGI.build_form do |form|
+    form.add "authenticity_token", token
+    form.add "question[question_text]", question
+    form.add "question[force_anonymous]", "force_anonymous",
+  end
 
   response = HTTP::Client.post(
       "http://ask.fm/#{user}/questions/create?#{params}",
