@@ -26,7 +26,7 @@ You can change the user by `-u {user}` option. Default user is [EzoeRyou](http:/
 ## Installation
 
 1. Install `crystal` compiler following [the instruction](http://crystal-lang.org/docs/installation/index.html).
-2. Execute `$ crystal build /path/to/ezoe/src/ezoe.cr` to generate executable or `$ crystal /path/to/ezoe/src/ezoe.cr` to run.
+2. Execute `$ crystal build --release /path/to/ezoe/src/ezoe.cr` to generate executable or `$ crystal --release  /path/to/ezoe/src/ezoe.cr` to run.
 
 It seems that Crystal is not ready for Windows.  [Cross compilation](http://crystal-lang.org/docs/syntax_and_semantics/cross-compilation.html) may be available.
 
