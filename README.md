@@ -35,6 +35,7 @@ It seems that Crystal is not ready for Windows.  [Cross compilation](http://crys
 - [golang](https://github.com/mattn/ezoe)
 - [Haskell](https://github.com/tanakh/ezoe)
 - [Clojure](https://github.com/mattn/clj-ezoe)
+- [Rust](https://github.com/woxtu/rust-ezoe)
 
 ## License
 
