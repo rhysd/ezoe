@@ -37,6 +37,8 @@ It seems that Crystal is not ready for Windows.  [Cross compilation](http://crys
 - [Clojure](https://github.com/mattn/clj-ezoe)
 - [Rust](https://github.com/woxtu/rust-ezoe)
 
+You may be able to find more implementations of `ezoe` in [awesome-ezoe](https://github.com/mattn/awesome-ezoe).
+
 ## License
 
 Distributed under [the MIT License](http://opensource.org/licenses/MIT)
