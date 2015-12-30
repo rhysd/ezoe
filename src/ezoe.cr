@@ -2,7 +2,6 @@ require "colorize"
 require "option_parser"
 require "http/client"
 require "xml/xml"
-require "cgi"
 
 # Note:
 # I can add type annotations like below:
@@ -27,7 +26,7 @@ def post_question(user, question)
   token = response.body.match(/<input name="authenticity_token" type="hidden" value="([^"]+)"/).try &.[1]
   abort "authentication token not found" unless token
 
-  params = CGI.build_form do |form|
+  params = HTTP::Params.build do |form|
     form.add "authenticity_token", token
     form.add "question[question_text]", question
     form.add "question[force_anonymous]", "force_anonymous"
