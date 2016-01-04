@@ -3,18 +3,27 @@ require "option_parser"
 require "http/client"
 require "xml/xml"
 
+
 # Note:
 # I can add type annotations like below:
 #
 #   def show_questions(user : String) : Nil
 #
 def show_questions(user)
-  response = HTTP::Client.get "http://ask.fm/feed/profile/#{user}.rss"
+  response = HTTP::Client.get "https://ask.fm/#{user}"
   abort response.status_message unless response.status_code == 200
 
-  XML.parse(response.body).content.try &.split(/\n\s+\n/)[2..-1].each do |item|
-    question,answer,time,url = item.split('\n').map(&.strip) # &. is to_proc operator: http://crystal-lang.org/2013/09/15/to-proc.html
-    answer = answer.gsub(/質問ではない。?|不?自由/){|m| m.colorize.green}
+  xpath_items    = "//div[@class='item streamItem streamItem-answer']"
+  xpath_url      = "div[@class='streamItemContent streamItemContent-footer']/a/@href"
+  xpath_question = "h1[@class='streamItemContent streamItemContent-question']"
+  xpath_answer   = "p[@class='streamItemContent streamItemContent-answer']"
+
+  XML.parse(response.body).xpath_nodes(xpath_items).each do |item|
+    url      = "https://ask.fm#{item.xpath_node(xpath_url).text.try &.strip}"
+    question = item.xpath_node(xpath_question).text.try &.strip
+    answer   = item.xpath_node(xpath_answer).text.try &.strip.gsub(/質問ではない。?|不?自由/){|m| m.colorize.green}
+    abort "Parse failed." unless url || question || answer
+
     puts "#{url}\n  #{question.colorize.red}\n  #{answer.colorize.white}\n\n"
   end
 end
