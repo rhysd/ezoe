@@ -22,7 +22,7 @@ def show_questions(user)
     url      = "https://ask.fm#{item.xpath_node(xpath_url).text.try &.strip}"
     question = item.xpath_node(xpath_question).text.try &.strip
     answer   = item.xpath_node(xpath_answer).text.try &.strip.gsub(/質問ではない。?|不?自由/){|m| m.colorize.green}
-    abort "Parse failed." unless url || question || answer
+    abort "Parse failed." unless url && question && answer
 
     puts "#{url}\n  #{question.colorize.red}\n  #{answer.colorize.white}\n\n"
   end
